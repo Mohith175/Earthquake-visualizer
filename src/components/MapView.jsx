@@ -3,8 +3,9 @@ import { MapContainer } from "react-leaflet";
 import BaseLayers from "./BaseLayers";
 import EarthquakeMarkers from "./EarthquakeMarkers";
 import NavBar from "./navbar/NavBar";
-import ResetViewButton from "./ResetViewButton";
+import ResetViewButton from "./reset view/ResetViewButton";
 import 'leaflet/dist/leaflet.css';
+import Info from "./info/Info"
 
 export default function MapView() {
   const [quakes, setQuakes] = useState([]);
@@ -90,6 +91,7 @@ export default function MapView() {
           defaultZoom={2}
         />
       </MapContainer>
+      <Info />
 
       {loading && (
         <div style={{

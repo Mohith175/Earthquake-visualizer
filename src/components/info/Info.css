@@ -1,0 +1,155 @@
+/* Info button container */
+.floating-buttons {
+  position: fixed;
+  bottom: 60px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* space between buttons */
+  z-index: 1000; /* keeps buttons above map/content */
+}
+
+.btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.info-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Info button styling */
+.info-btn {
+  background: #1e40af;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  width: 40px;
+  height: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.info-btn:hover {
+  background:  #007bffd4;
+  transform: scale(1.1);
+}
+
+.info-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+/* Info popup styling */
+.info-popup {
+  position: absolute;
+  bottom: 100%;
+  left: 30%;
+  transform: translateX(-50%);
+  margin-bottom: 8px;
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  min-width: 200px;
+  max-width: 300px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Arrow pointing down from popup to button */
+.info-popup::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top-color: white;
+}
+
+.info-popup::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 9px solid transparent;
+  border-top-color: #ddd;
+  z-index: -1;
+}
+
+/* Popup content styling */
+.info-popup h4 {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.info-popup ul {
+  margin: 0;
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+.info-popup li {
+  margin-bottom: 6px;
+  color: #555;
+}
+
+.color-yellow,
+.color-orange,
+.color-red {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;  /* makes them circles */
+  margin-right: 8px;   /* spacing between circle and text */
+}
+
+.color-yellow { background-color: yellow; }
+.color-orange { background-color: orange; }
+.color-red { background-color: red; }
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .info-popup {
+    min-width: 180px;
+    max-width: 250px;
+    font-size: 13px;
+    padding: 12px;
+  }
+  
+  .info-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+}
+
+/* Animation for popup appearance */
+.info-popup {
+  animation: fadeInUp 0.2s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}

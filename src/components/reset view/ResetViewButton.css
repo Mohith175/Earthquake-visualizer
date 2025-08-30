@@ -1,0 +1,32 @@
+.reset-view-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  height: 30px;
+  background: #1e40af;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 6px 12px;
+  transition: all 0.3s ease;
+}
+
+.reset-view-btn:hover {
+  background: #007bffd4;
+  transform: scale(1.1);
+}
+
+.reset-view-btn:active svg {
+  animation: spin_357 0.5s linear;
+}
+
+.reset-view-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+@keyframes spin_357 {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

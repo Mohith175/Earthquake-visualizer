@@ -1,3 +1,5 @@
+
+/* Original NavBar Styles */
 .navbar-container {
   background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
   color: white;
@@ -24,24 +26,47 @@
 .navbar-buttons {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
-.info-btn {
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-  border: 1px solid rgba(255,255,255,0.2);
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  margin-left: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
+/* Fixed navbar-content animation */
+.navbar-content {
+  display: flex;
+  flex-direction: column;
+  transform: scaleY(0);
+  transform-origin: top;
+  opacity: 0;
+  max-height: 0;              /* ensures it collapses */
+  overflow: hidden;           /* hides content */
+  visibility: hidden;         /* makes it not clickable */
+  transition: transform 0.7s ease, 
+              opacity 0.7s ease,
+              max-height 0.7s ease,
+              visibility 0.7s ease;
 }
 
-.info-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-1px);
+.navbar-content.show {
+  transform: scaleY(1);
+  opacity: 1;
+  max-height: 300px;          /* big enough for your content */
+  visibility: visible;
+}
+
+
+
+.section {
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.section-header {
+  padding: 8px 20px 0px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.section-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
 }
 
 /* Filters row */
@@ -50,7 +75,7 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
   gap: 30px;
-  padding: 10px 20px;
+  padding: 10px 20px 15px 20px;
 }
 
 /* Label + input side by side */
@@ -61,33 +86,69 @@
   min-width: 150px;
 }
 
+.filter-item label {
+  font-size: 0.9rem;
+  min-width: 80px;
+}
+
+
 .filter-item input[type="range"] {
   accent-color: rgba(59, 130, 246, 0.8);
   cursor: pointer;
+  min-width: 100px;
 }
 
 .filter-item input[type="number"],
 .filter-item select {
   padding: 6px 8px;
   border-radius: 6px;
-  border: 1px solid rgba(55, 65, 81, 0.7);
-  background-color: rgba(17, 24, 39, 0.4);
+  border: 1px solid rgba(30, 64, 175, 0.6);
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.8) 0%, rgba(30, 64, 175, 0.8) 100%);
   color: white;
   opacity: 0.95;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
+  transition: all 0.3s ease;
+  min-width: 80px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.filter-item input[type="number"]:hover,
+.filter-item select:hover {
+  border-color: rgba(96, 165, 250, 0.8);
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.9) 0%, rgba(30, 64, 175, 0.9) 100%);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .filter-item input[type="number"]:focus,
 .filter-item select:focus {
   outline: none;
-  border-color: rgba(59, 130, 246, 0.9);
-  background-color: rgba(17, 24, 39, 0.8);
+  border-color: rgba(147, 197, 253, 1);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.9) 0%, rgba(96, 165, 250, 0.9) 100%);
+  box-shadow: 0 0 0 3px rgba(147, 197, 253, 0.3), 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.filter-item select option {
+  background: rgba(52, 112, 210, 0.8);         /* or a dark gradient if you want */
+  color: black;        
+}
+
+.filter-item select option:hover {
+  background: rgba(59, 130, 246, 0.9);
+  color: white;
+}
+
+
+.range-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 /* Optional: show range value next to slider */
 .range-value {
-  min-width: 15px;
+  min-width: 30px;
   text-align: center;
+  font-size: 0.9rem;
 }
 
 /* Stats row below filters */
@@ -96,8 +157,7 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
   gap: 30px;
-  padding: 10px 20px;
-  border-top: 1px solid rgba(255,255,255,0.2);
+  padding: 10px 20px 15px 20px;
 }
 
 .stat-item {
@@ -117,46 +177,139 @@
   color: #ffffffcc;
 }
 
-
-.info-popup {
-  position: absolute;
-  top: 45px;
-  right: 0;
-  background-color: #111827; /* darker bg */
-  color: white;
-  border: 1px solid #374151;
-  padding: 10px;
-  border-radius: 6px;
-  width: 180px;
-  font-size: 0.85rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-  z-index: 2000;
+/* Hamburger Menu Styles - Adapted for navbar theme */
+.popup {
+  --burger-line-width: 1.125em;
+  --burger-line-height: 0.125em;
+  --burger-offset: 0.625em;
+  --burger-bg: rgba(255, 255, 255, 0.1);
+  --burger-color: white;
+  --burger-line-border-radius: 0.1875em;
+  --burger-diameter: 2.125em;
+  --burger-btn-border-radius: calc(var(--burger-diameter) / 2);
+  --burger-line-transition: .3s;
+  --burger-transition: all .1s ease-in-out;
+  --burger-hover-scale: 1.1;
+  --burger-active-scale: .95;
+  --burger-enable-outline-color: rgba(255, 255, 255, 0.3);
+  --burger-enable-outline-width: 0.125em;
+  --burger-enable-outline-offset: var(--burger-enable-outline-width);
+  /* nav */
+  --nav-padding-x: 0.25em;
+  --nav-padding-y: 0.625em;
+  --nav-border-radius: 0.375em;
+  --nav-border-color: rgba(55, 65, 81, 0.7);
+  --nav-border-width: 0.0625em;
+  --nav-shadow-color: rgba(0, 0, 0, .4);
+  --nav-shadow-width: 0 4px 12px;
+  --nav-bg: #111827;
+  --nav-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --nav-default-scale: .8;
+  --nav-active-scale: 1;
+  --nav-position-left: unset;
+  --nav-position-right: 0;
+  /* title */
+  --nav-title-size: 0.625em;
+  --nav-title-color: #9ca3af;
+  --nav-title-padding-x: 1rem;
+  --nav-title-padding-y: 0.25em;
+  /* nav button */
+  --nav-button-padding-x: 1rem;
+  --nav-button-padding-y: 0.375em;
+  --nav-button-border-radius: 0.375em;
+  --nav-button-font-size: 13px;
+  --nav-button-hover-bg: rgba(59, 130, 246, 0.8);
+  --nav-button-hover-text-color: #fff;
+  --nav-button-distance: 0.875em;
+  /* underline */
+  --underline-border-width: 0.0625em;
+  --underline-border-color: rgba(55, 65, 81, 0.7);
+  --underline-margin-y: 0.3125em;
 }
 
-.info-popup ul {
-  list-style: none;
-  padding: 0;
-  margin: 5px 0 0 0;
-}
-
-.info-popup li {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  margin-bottom: 4px;
-}
-
-.info-popup .color-circle {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
+.popup {
   display: inline-block;
+  text-rendering: optimizeLegibility;
+  position: relative;
 }
 
-.color-yellow { background-color: yellow; }
-.color-orange { background-color: orange; }
-.color-red { background-color: red; }
+.popup input {
+  display: none;
+}
 
+.burger {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  background: var(--burger-bg);
+  width: var(--burger-diameter);
+  height: var(--burger-diameter);
+  border-radius: var(--burger-btn-border-radius);
+  border: 1px solid rgba(255,255,255,0.2);
+  cursor: pointer;
+  overflow: hidden;
+  transition: var(--burger-transition);
+  outline: var(--burger-enable-outline-width) solid transparent;
+  outline-offset: 0;
+  backdrop-filter: blur(10px);
+}
+
+.burger span {
+  height: var(--burger-line-height);
+  width: var(--burger-line-width);
+  background: var(--burger-color);
+  border-radius: var(--burger-line-border-radius);
+  position: absolute;
+  transition: var(--burger-line-transition);
+}
+
+.burger span:nth-child(1) {
+  top: var(--burger-offset);
+}
+
+.burger span:nth-child(2) {
+  bottom: var(--burger-offset);
+}
+
+.burger span:nth-child(3) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.burger:hover {
+  transform: scale(var(--burger-hover-scale));
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.burger:active {
+  transform: scale(var(--burger-active-scale));
+}
+
+.burger:focus:not(:hover) {
+  outline-color: var(--burger-enable-outline-color);
+  outline-offset: var(--burger-enable-outline-offset);
+}
+
+.popup input:checked + .burger span:nth-child(1) {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.popup input:checked + .burger span:nth-child(2) {
+  bottom: 50%;
+  transform: translateY(50%) rotate(-45deg);
+}
+
+.popup input:checked + .burger span:nth-child(3) {
+  transform: translateX(calc(var(--burger-diameter) * -1 - var(--burger-line-width)));
+}
+
+.popup input:checked ~ nav {
+  transform: scale(var(--nav-active-scale));
+  visibility: visible;
+  opacity: 1;
+}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
@@ -164,15 +317,14 @@
     flex-direction: column;
     gap: 10px;
   }
-
   .filter-item {
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
   }
-
   .stats-row {
     justify-content: center;
     gap: 15px;
   }
+  
 }
