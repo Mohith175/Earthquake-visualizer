@@ -1,16 +1,98 @@
-<<<<<<< HEAD
-# React + Vite
+# Earthquake Visualizer
+A React + Vite project to visualize recent earthquakes on an interactive map with filters and live statistics.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Earthquake Visualizer fetches real-time earthquake data from the [USGS Earthquake API](https://earthquake.usgs.gov/fdsnws/event/1/), and displays it on a Leaflet map. Users can filter earthquakes, view stats, and explore interactive markers.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
-# Earthquake-visualizer
->>>>>>> 9a9e29a5d6f6b9c1ad8920ff6156a167f6235f74
+## Features
+|--------------------|----------------------------------------------------------------------------------|
+|       Feature      |                                   Description                                    |
+|--------------------|----------------------------------------------------------------------------------|
+| Interactive Map    | Earthquake markers with popups for details like magnitude, location, and time    |
+| Map Layers         | Toggle between different map styles: streets, terrain, satellite                 |
+| Filters            | Filter earthquakes by time range, magnitude, and depth                           |
+| Stats Panel        | Shows total earthquakes, maximum magnitude, average depth, and last updated time |
+| Info Popup         | Magnitude color guide for quick reference                                        |
+| Reset View Button  | Resets map to default center and zoom                                            |
+| Map Type Switching | Toggle between different map styles (streets, satellite, terrain)                |
+| Responsive Design  | Works on mobile, tablet, and desktop                                             |
+|--------------------|----------------------------------------------------------------------------------|
+
+---
+
+## Project Structure
+```
+earthquake-visualizer/
+├── public/                   # Static assets
+├── src/
+│   ├── components/
+│   │   ├── info/
+│   │   │   ├── Info.jsx
+│   │   │   └── Info.css
+│   │   ├── navbar/
+│   │   │   ├── NavBar.jsx
+│   │   │   └── NavBar.css
+│   │   ├── reset view/
+│   │   │   ├── ResetViewButton.jsx
+│   │   │   └── ResetViewButton.css
+│   │   ├── MapView\.jsx
+│   │   └── BaseLayers.jsx
+│   ├── App.js
+│   └── index.js
+└── package.json
+```
+---
+
+## Tools & Technologies
+
+- React (component-based UI)  
+- Vite (fast development server and build tool)  
+- Leaflet (interactive maps)  
+- JavaScript, HTML, CSS  
+- USGS Earthquake API (real-time earthquake data)  
+
+---
+
+## Installation & Setup
+
+1. Clone the repository:
+
+```
+git clone https://github.com/<your-username>/Earthquake-visualizer.git
+cd Earthquake-visualizer
+````
+
+2. Install dependencies:
+
+```
+npm install
+```
+
+3. Start the development server:
+
+```bash
+npm run dev
+```
+
+4. Open the app in your browser (Vite will provide a local URL, e.g., `http://localhost:5173`).
+
+---
+
+## Development Process
+
+1. **Project Setup:** Initialized Vite + React project and installed Leaflet for map integration.
+2. **UI Design:** Designed responsive map, filter controls, buttons, and info panels with CSS and media queries.
+3. **Feature Implementation:**
+   * Fetch and display earthquake data from USGS API
+   * Interactive map with markers and popups
+   * Map layers switcher (streets, terrain, satellite)  
+   * Filters for time, magnitude, and depth
+   * Stats panel with real-time summary
+   * Info popup with magnitude color guide
+   * Reset view button for map navigation
+4. **Responsive Design:** Ensured usability across mobile, tablet, and desktop devices.
