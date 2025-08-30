@@ -97,7 +97,7 @@ export default function NavBar({ quakes, onRefresh, onFilterChange, mapType, set
                             onChange={e => {
                                 let val = Number(e.target.value);
                                 if (isNaN(val)) val = 0;
-                                val = Math.min(700, Math.max(0, val));
+                                val = Math.min(1000, Math.max(0, val));
                                 handleFilterChange("maxDepth", val);
                             }}
                         />
