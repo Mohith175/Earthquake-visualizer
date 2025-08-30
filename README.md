@@ -15,7 +15,7 @@ Earthquake Visualizer fetches real-time earthquake data from the [USGS Earthquak
 | Interactive Map    | Earthquake markers with popups for details like magnitude, location, and time    |
 | Map Layers         | Toggle between different map styles: streets, terrain, satellite                 |
 | Filters            | Filter earthquakes by time range, magnitude, and depth                           |
-| Stats Panel        | Shows total earthquakes, maximum magnitude, average depth, and last updated time |
+| Statistics Panel        | Shows total earthquakes, maximum magnitude, average depth, and last updated time |
 | Info Popup         | Magnitude color guide for quick reference                                        |
 | Reset View Button  | Resets map to default center and zoom                                            |
 | Map Type Switching | Toggle between different map styles (streets, satellite, terrain)                |
@@ -38,7 +38,7 @@ earthquake-visualizer/
 │   │   ├── reset view/
 │   │   │   ├── ResetViewButton.jsx
 │   │   │   └── ResetViewButton.css
-│   │   ├── MapView\.jsx
+│   │   ├── MapView.jsx
 │   │   └── BaseLayers.jsx
 │   ├── App.js
 │   └── index.js
