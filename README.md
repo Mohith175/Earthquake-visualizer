@@ -10,7 +10,6 @@ Earthquake Visualizer fetches real-time earthquake data from the [USGS Earthquak
 ---
 
 ## Features
-|--------------------|----------------------------------------------------------------------------------|
 |       Feature      |                                   Description                                    |
 |--------------------|----------------------------------------------------------------------------------|
 | Interactive Map    | Earthquake markers with popups for details like magnitude, location, and time    |
@@ -21,7 +20,6 @@ Earthquake Visualizer fetches real-time earthquake data from the [USGS Earthquak
 | Reset View Button  | Resets map to default center and zoom                                            |
 | Map Type Switching | Toggle between different map styles (streets, satellite, terrain)                |
 | Responsive Design  | Works on mobile, tablet, and desktop                                             |
-|--------------------|----------------------------------------------------------------------------------|
 
 ---
 
