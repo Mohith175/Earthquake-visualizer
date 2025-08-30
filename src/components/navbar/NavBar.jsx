@@ -51,7 +51,6 @@ export default function NavBar({ quakes, onRefresh, onFilterChange, mapType, set
                 </div>
             </div>
 
-            {/* Controls Section - Always rendered but animated with CSS */}
             <div className={`navbar-content ${showControls ? 'show' : ''}`}>
                 {/* Filters Section */}
                 <div className="section">
@@ -79,23 +78,6 @@ export default function NavBar({ quakes, onRefresh, onFilterChange, mapType, set
                                 />
                                 <span className="range-value">{filters.minMag}</span>
                             </div>
-                        </div>
-
-                        <div className="filter-item">
-                            <label>Max Depth (km):</label>
-                            <input
-                                type="number"
-                                min="0"
-                                max="1000"
-                                value={filters.maxDepth === 0 ? '' : filters.maxDepth}
-                                placeholder="1000"
-                                onChange={e => {
-                                    let val = Number(e.target.value);
-                                    if (isNaN(val)) val = 0;
-                                    val = Math.min(1000, Math.max(0, val));
-                                    handleFilterChange("maxDepth", val);
-                                }}
-                            />
                         </div>
                     <div className="filter-item">
                         <label>Max Depth (km):</label>
