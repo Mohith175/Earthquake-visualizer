@@ -12,7 +12,7 @@ export default function MapView() {
   const [filteredQuakes, setFilteredQuakes] = useState([]);
   const [filters, setFilters] = useState({
     minMag: 0,
-    depthRange: [0, 700],
+    depthRange: [0, 1000],
     timeRange: "all_day"
   });
   const [loading, setLoading] = useState(false);
