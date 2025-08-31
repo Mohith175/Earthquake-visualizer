@@ -29,7 +29,7 @@ export default function Info() {
                     <ul>
                         <li><span className="color-yellow"></span> &lt; 3</li>
                         <li><span className="color-orange"></span> 3 – 5</li>
-                        <li><span className="color-red"></span> ≥ 5</li>
+                        <li><span className="color-red"></span> &gt; 5</li>
                     </ul>
                 </div>
             )}
