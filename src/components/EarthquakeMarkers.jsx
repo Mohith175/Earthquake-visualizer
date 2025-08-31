@@ -15,7 +15,7 @@ export default function EarthquakeMarkers({ quakes }) {
             center={[quake.lat, quake.lng]}
             radius={isHovered ? Math.max(4, quake.mag * 2.5) : Math.max(3, quake.mag * 2)}
             pathOptions={{
-              fillColor: quake.mag > 5 ? 'red' : quake.mag > 3 ? 'orange' : 'yellow',
+              fillColor: quake.mag > 5 ? 'red' : quake.mag >= 3 ? 'orange' : 'yellow',
               color: isHovered ? '#fff' : '#000',
               weight: isHovered ? 2 : 1,
               opacity: 1,
