@@ -27,9 +27,9 @@ export default function Info() {
                 <div className="info-popup" ref={infoRef}>
                     <b>Magnitude Colors:</b><br />
                     <ul>
-                        <li><span className="color-yellow"></span> &lt; 5</li>
-                        <li><span className="color-orange"></span> 5 – 6</li>
-                        <li><span className="color-red"></span> ≥ 6</li>
+                        <li><span className="color-yellow"></span> &lt; 3</li>
+                        <li><span className="color-orange"></span> 3 – 5</li>
+                        <li><span className="color-red"></span> ≥ 5</li>
                     </ul>
                 </div>
             )}
